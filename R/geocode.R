@@ -69,10 +69,10 @@ geocode <- function(addresses, autocomplete = FALSE, url_only = FALSE) {
         geocode_failed <<- c(geocode_failed, addresses[count])
         return(NULL)
       }
-      result <- data.table::data.table(
+        result <- data.table::data.table(
         id = ids[count],
+        match =  df$Response$View$Result[[1]]$MatchLevel
         address = df$Response$View$Result[[1]]$Location$Address$Label,
-       # match = 
         street = df$Response$View$Result[[1]]$Location$Address$Street,
         houseNumber = df$Response$View$Result[[1]]$Location$Address$HouseNumber,
         postalCode = df$Response$View$Result[[1]]$Location$Address$PostalCode,
@@ -80,7 +80,7 @@ geocode <- function(addresses, autocomplete = FALSE, url_only = FALSE) {
         city = df$Response$View$Result[[1]]$Location$Address$City,
         county = df$Response$View$Result[[1]]$Location$Address$County,
         state = df$Response$View$Result[[1]]$Location$Address$State,
-        country = df$Response$View$Result[[1]]$Location$MatchLevel,
+        country = df$Response$View$Result[[1]]$Location$Address$Country,
         type = df$Response$View$Result[[1]]$Location$LocationType,
         lng = df$Response$View$Result[[1]]$Location$NavigationPosition[[1]]$Longitude,
         lat = df$Response$View$Result[[1]]$Location$NavigationPosition[[1]]$Latitude
