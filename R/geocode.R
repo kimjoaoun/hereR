@@ -71,7 +71,8 @@ geocode <- function(addresses, autocomplete = FALSE, url_only = FALSE) {
       }
         result <- data.table::data.table(
         id = ids[count],
-        match =  df$Response$View$Result[[1]]$MatchLevel,
+        matchlevel =  df$Response$View$Result[[1]]$MatchLevel,
+        matchqual =  df$Response$View$Result[[1]]$MatchQuality,
         address = df$Response$View$Result[[1]]$Location$Address$Label,
         street = df$Response$View$Result[[1]]$Location$Address$Street,
         houseNumber = df$Response$View$Result[[1]]$Location$Address$HouseNumber,
